@@ -3,40 +3,40 @@ import { Link, Outlet } from "react-router-dom";
 import "../styles/Navbar.css";
 
 const Navbar = () => {
-  const [category, setCategory] = useState("Living");
+  const [category, setCategory] = useState("Action");
   return (
     <>
       <ul id="navigation-bar">
         <li>
-          <Link to="/">Fejka</Link>
+          <Link to="/">Cineverse</Link>
         </li>
         <li>
-          <Link to="/shop" onClick={() => setCategory("Living")}>
-            Living
+          <Link to="/shop" onClick={() => setCategory("Action")}>
+            Action
           </Link>
         </li>
         <li>
-          <Link to="/shop" onClick={() => setCategory("Bedroom")}>
-            Bedroom
+          <Link to="/shop" onClick={() => setCategory("Comedy")}>
+            Comedy
           </Link>
         </li>
         <li>
-          <Link to="/shop" onClick={() => setCategory("Dining")}>
-            Dining
+          <Link to="/shop" onClick={() => setCategory("Drama")}>
+            Drama
           </Link>
         </li>
         <li>
-          <Link to="/shop" onClick={() => setCategory("Office")}>
-            Office
+          <Link to="/shop" onClick={() => setCategory("Horror")}>
+            Horror
           </Link>
         </li>
         <li>
-          <Link to="/shop" onClick={() => setCategory("Decor")}>
-            Decor
+          <Link to="/shop" onClick={() => setCategory("Sci-Fi")}>
+            Sci-Fi
           </Link>
         </li>
         <li>
-          <Link to="/">Cart</Link>
+          <Link to="/">Watchlist</Link>
         </li>
       </ul>
       <Outlet context={{ category, setCategory }} />
