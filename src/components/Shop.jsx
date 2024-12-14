@@ -1,13 +1,14 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useOutletContext } from "react-router-dom";
 
 const Shop = () => {
   const { category } = useOutletContext();
+  const [data, setData] = useState(null);
 
   // Update document title to include the current category
   useEffect(() => {
     document.title = `Browse - ${category}`;
-  });
+  }, [category]);
 
   // Fetch products from API
   useEffect(() => {
@@ -22,15 +23,33 @@ const Shop = () => {
       }
     )
       .then((res) => res.json())
-      .then((json) => console.log(json))
-      .catch((error) => console.log(error));
+      .then((res) => {
+        console.log(res.shows);
+        setData(res.shows);
+      })
+      .catch((error) => console.log("Error fetching data:", error));
   }, [category]);
 
+  // Safely render the component
   return (
     <div>
       <h1>Shop</h1>
       <p>This is the shop page.</p>
       <p>Current category: {category}</p>
+
+      {data ? (
+        data.length > 0 ? (
+          data.map((item, i) => (
+            <div key={i}>
+              <h2>{item.title}</h2>
+            </div>
+          ))
+        ) : (
+          <p>No results found for this category.</p>
+        )
+      ) : (
+        <p>Loading...</p>
+      )}
     </div>
   );
 };
