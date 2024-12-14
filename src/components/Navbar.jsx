@@ -31,7 +31,7 @@ const Navbar = () => {
           </Link>
         </li>
         <li>
-          <Link to="/shop" onClick={() => setCategory("Sci-Fi")}>
+          <Link to="/shop" onClick={() => setCategory("Scifi")}>
             Sci-Fi
           </Link>
         </li>

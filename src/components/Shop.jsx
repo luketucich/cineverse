@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useOutletContext } from "react-router-dom";
+import "../styles/shop.css";
 
 const Shop = () => {
   const { category } = useOutletContext();
@@ -32,25 +33,32 @@ const Shop = () => {
 
   // Safely render the component
   return (
-    <div>
+    <main id="shop-main">
       <h1>Shop</h1>
       <p>This is the shop page.</p>
       <p>Current category: {category}</p>
 
       {data ? (
         data.length > 0 ? (
-          data.map((item, i) => (
-            <div key={i}>
-              <h2>{item.title}</h2>
-            </div>
-          ))
+          <div className="cards-container">
+            {data.map((item, i) => (
+              <div key={i} className="card">
+                <h1 className="card-title">{item.title}</h1>
+                <img
+                  className="card-image"
+                  src={item.imageSet.horizontalBackdrop.w1080}
+                  alt={item.title}
+                />
+              </div>
+            ))}
+          </div>
         ) : (
           <p>No results found for this category.</p>
         )
       ) : (
         <p>Loading...</p>
       )}
-    </div>
+    </main>
   );
 };
 
