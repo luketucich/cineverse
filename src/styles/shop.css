@@ -12,10 +12,20 @@
   gap: 1rem;
   justify-content: center;
   padding: 1rem;
+  animation: fadeIn 0.5s ease-in-out;
 }
 
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 .card {
-  background-color: rgb(207, 207, 207);
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+  background-color: rgb(227, 227, 227);
   padding: 1rem;
   border-radius: 1rem;
   display: flex;
@@ -23,7 +33,15 @@
   align-items: center;
   max-width: 15rem;
   justify-content: space-between;
-  transition: all 0.5s ease-in-out;
+  transition: transform 0.5s ease-in-out, box-shadow 0.3s ease-in-out;
+  gap: 1rem;
+  min-height: 22rem;
+}
+
+.card.placeholder {
+  background-color: rgb(200, 200, 200);
+  box-shadow: none;
+  visibility: hidden;
 }
 
 .card:hover {
@@ -46,14 +64,23 @@
 }
 
 .modal {
-  animation: toCenter 0.5s ease-in-out forwards;
+  position: fixed;
+  z-index: 10;
+  top: var(--card-original-top);
+  left: var(--card-original-left);
+  width: var(--card-original-width);
+  animation: moveToCenter 0.5s ease-in-out forwards;
 }
 
-@keyframes toCenter {
-  from {
-    transform: scale(1);
-  }
-  to {
-    transform: scale(1.2);
+@keyframes moveToCenter {
+  100% {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80vw; /* Dynamic width */
+    max-width: 25rem; /* Ensure a reasonable maximum */
+    max-height: 90vh; /* Adjust to viewport */
+    border-radius: 1.5rem;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
   }
 }

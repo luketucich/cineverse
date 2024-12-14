@@ -3,9 +3,10 @@ import { useOutletContext } from "react-router-dom";
 import "../styles/shop.css";
 
 const Shop = () => {
-  const { category, data, setData } = useOutletContext();
+  const { category } = useOutletContext();
   const [showModal, setShowModal] = useState(false);
   const [currItem, setCurrItem] = useState(null);
+  const [data, setData] = useState(null);
 
   // Update document title to include the current category
   useEffect(() => {
@@ -14,7 +15,8 @@ const Shop = () => {
 
   // Fetch products from API
   useEffect(() => {
-    fetch(`https://imdb236.p.rapidapi.com/imdb/most-popular-movies`, {
+    setData(null);
+    fetch(`https://imdb236.p.rapidapi.com/imdb/${category}`, {
       headers: {
         "x-rapidapi-key": "55ec5dfe48msh8f8434c72a3573ep1f87a7jsn6919ef2414b8",
         "x-rapidapi-host": "imdb236.p.rapidapi.com",
@@ -22,22 +24,34 @@ const Shop = () => {
     })
       .then((res) => res.json())
       .then((res) => {
-        console.log(res.shows);
-        setData(res.shows);
+        console.log(res);
+        setData(res);
       })
       .catch((error) => console.log("Error fetching data:", error));
   }, [category, setData]);
 
   const handleOpenModal = (e) => {
     const card = e.target.closest(".card");
-    setCurrItem(
-      e.target.closest(".card").querySelector(".card-title").innerText
+    if (!card) return;
+
+    const cardBounds = card.getBoundingClientRect();
+    document.documentElement.style.setProperty(
+      "--card-original-top",
+      `${cardBounds.top}px`
+    );
+    document.documentElement.style.setProperty(
+      "--card-original-left",
+      `${cardBounds.left}px`
+    );
+    document.documentElement.style.setProperty(
+      "--card-original-width",
+      `${cardBounds.width}px`
     );
 
-    showModal ? setShowModal(false) : setShowModal(true);
-    if (card) {
-      card.classList.toggle("modal");
-    }
+    setCurrItem(card.querySelector(".card-title").innerText);
+    setShowModal(!showModal);
+
+    card.classList.toggle("modal");
   };
 
   // Safely render the component
@@ -53,20 +67,28 @@ const Shop = () => {
             {data.map((item, i) => (
               <>
                 {showModal && currItem === item.title && (
-                  <div className="card"></div>
+                  <div
+                    key={i + item.title + `placeholder`}
+                    className="card placeholder"
+                  ></div>
                 )}
                 <div
-                  key={i}
+                  key={i + item.title}
                   className="card"
                   onClick={(e) => handleOpenModal(e)}
                 >
                   <h1 className="card-title">{item.title}</h1>
                   <img
                     className="card-image"
-                    src={item.imageSet.horizontalBackdrop.w1080}
+                    src={item.primaryImage}
                     alt={item.title}
                   />
-                  <button>Add to Watchlist</button>
+                  {showModal && currItem === item.title && (
+                    <div className="modal-content">
+                      <p>{item.description}</p>
+                      <p>Rating: {item.rating}</p>
+                    </div>
+                  )}
                 </div>
               </>
             ))}
