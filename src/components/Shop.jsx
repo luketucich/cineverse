@@ -3,8 +3,9 @@ import { useOutletContext } from "react-router-dom";
 import "../styles/shop.css";
 
 const Shop = () => {
-  const { category } = useOutletContext();
-  const [data, setData] = useState(null);
+  const { category, data, setData } = useOutletContext();
+  const [showModal, setShowModal] = useState(false);
+  const [currItem, setCurrItem] = useState(null);
 
   // Update document title to include the current category
   useEffect(() => {
@@ -13,23 +14,31 @@ const Shop = () => {
 
   // Fetch products from API
   useEffect(() => {
-    fetch(
-      `https://streaming-availability.p.rapidapi.com/shows/search/filters?country=us&series_granularity=show&genres=${category}&order_direction=desc&order_by=rating&genres_relation=and&output_language=en&show_type=movie`,
-      {
-        headers: {
-          "x-rapidapi-key":
-            "55ec5dfe48msh8f8434c72a3573ep1f87a7jsn6919ef2414b8",
-          "x-rapidapi-host": "streaming-availability.p.rapidapi.com",
-        },
-      }
-    )
+    fetch(`https://imdb236.p.rapidapi.com/imdb/most-popular-movies`, {
+      headers: {
+        "x-rapidapi-key": "55ec5dfe48msh8f8434c72a3573ep1f87a7jsn6919ef2414b8",
+        "x-rapidapi-host": "imdb236.p.rapidapi.com",
+      },
+    })
       .then((res) => res.json())
       .then((res) => {
         console.log(res.shows);
         setData(res.shows);
       })
       .catch((error) => console.log("Error fetching data:", error));
-  }, [category]);
+  }, [category, setData]);
+
+  const handleOpenModal = (e) => {
+    const card = e.target.closest(".card");
+    setCurrItem(
+      e.target.closest(".card").querySelector(".card-title").innerText
+    );
+
+    showModal ? setShowModal(false) : setShowModal(true);
+    if (card) {
+      card.classList.toggle("modal");
+    }
+  };
 
   // Safely render the component
   return (
@@ -42,14 +51,24 @@ const Shop = () => {
         data.length > 0 ? (
           <div className="cards-container">
             {data.map((item, i) => (
-              <div key={i} className="card">
-                <h1 className="card-title">{item.title}</h1>
-                <img
-                  className="card-image"
-                  src={item.imageSet.horizontalBackdrop.w1080}
-                  alt={item.title}
-                />
-              </div>
+              <>
+                {showModal && currItem === item.title && (
+                  <div className="card"></div>
+                )}
+                <div
+                  key={i}
+                  className="card"
+                  onClick={(e) => handleOpenModal(e)}
+                >
+                  <h1 className="card-title">{item.title}</h1>
+                  <img
+                    className="card-image"
+                    src={item.imageSet.horizontalBackdrop.w1080}
+                    alt={item.title}
+                  />
+                  <button>Add to Watchlist</button>
+                </div>
+              </>
             ))}
           </div>
         ) : (

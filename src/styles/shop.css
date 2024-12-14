@@ -23,6 +23,11 @@
   align-items: center;
   max-width: 15rem;
   justify-content: space-between;
+  transition: all 0.5s ease-in-out;
+}
+
+.card:hover {
+  cursor: pointer;
 }
 
 .card-title {
@@ -38,4 +43,17 @@
   max-height: 15rem;
   border-radius: 1rem;
   object-fit: cover;
+}
+
+.modal {
+  animation: toCenter 0.5s ease-in-out forwards;
+}
+
+@keyframes toCenter {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.2);
+  }
 }
