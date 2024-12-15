@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useOutletContext } from "react-router-dom";
 import "../styles/shop.css";
+import { IconStar } from "@tabler/icons-react";
 
 const Shop = () => {
   const { category } = useOutletContext();
@@ -57,10 +58,7 @@ const Shop = () => {
   // Safely render the component
   return (
     <main id="shop-main">
-      <h1>Shop</h1>
-      <p>This is the shop page.</p>
-      <p>Current category: {category}</p>
-
+      <h1>{category.split("-").join(" ")}</h1>
       {data ? (
         data.length > 0 ? (
           <div className="cards-container">
@@ -83,7 +81,24 @@ const Shop = () => {
                     alt={item.title}
                   />
                   <h1 className="card-title">{item.title}</h1>
-                  <h1 className="card-title">{item.averageRating}</h1>
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      gap: "0.5rem",
+                    }}
+                  >
+                    <IconStar
+                      style={{
+                        width: "1.5rem",
+                        height: "1.5rem",
+                        color: "rgb(218, 165, 32)", // Darker gold color
+                        fill: "gold",
+                      }}
+                    />
+                    <h1 className="card-title">{item.averageRating}/10</h1>
+                  </div>
 
                   {showModal && currItem === item.title && (
                     <>
