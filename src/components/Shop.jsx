@@ -77,17 +77,21 @@ const Shop = () => {
                   className="card"
                   onClick={(e) => handleOpenModal(e)}
                 >
-                  <h1 className="card-title">{item.title}</h1>
                   <img
                     className="card-image"
                     src={item.primaryImage}
                     alt={item.title}
                   />
+                  <h1 className="card-title">{item.title}</h1>
+                  <h1 className="card-title">{item.averageRating}</h1>
+
                   {showModal && currItem === item.title && (
-                    <div className="modal-content">
-                      <p>{item.description}</p>
-                      <p>Rating: {item.rating}</p>
-                    </div>
+                    <>
+                      <div className="modal-content">
+                        <p>{item.description}</p>
+                        <p>Rating: {item.rating}</p>
+                      </div>
+                    </>
                   )}
                 </div>
               </>
