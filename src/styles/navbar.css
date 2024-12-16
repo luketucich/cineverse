@@ -6,6 +6,10 @@
   list-style-type: none;
   margin: 0;
   padding: 1rem;
+  background-color: rgb(141, 0, 0);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 #navigation-bar a {
@@ -16,9 +20,11 @@
 .dropdown {
   position: relative;
   display: inline-block;
+  transition: all 0.5s ease-in-out;
 }
 
 .dropbtn {
+  transition: all 0.5s ease-in-out;
   background-color: transparent;
   border: none;
   font-size: 1rem;
@@ -49,8 +55,4 @@
 
 .dropdown:hover .dropdown-content {
   display: block;
-}
-
-.dropdown:hover .dropbtn {
-  background-color: #3e8e41;
 }

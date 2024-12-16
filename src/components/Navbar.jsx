@@ -10,9 +10,11 @@ import "../styles/Navbar.css";
 
 const Navbar = () => {
   const [category, setCategory] = useState("top250-movies");
+  const [heading, setHeading] = useState("Top 250 Movies");
 
-  const handleNavClick = (newCategory) => {
+  const handleNavClick = (newCategory, newHeading) => {
     setCategory(newCategory);
+    setHeading(newHeading);
   };
 
   return (
@@ -40,10 +42,9 @@ const Navbar = () => {
         <li>
           <div className="dropdown">
             <button className="dropbtn">
-              {" "}
               <li>
                 <Link
-                  to="/"
+                  to="/shop"
                   style={{
                     display: "flex",
                     alignItems: "center",
@@ -62,15 +63,27 @@ const Navbar = () => {
               </li>
             </button>
             <div className="dropdown-content">
-              <Link to="/shop" onClick={() => handleNavClick("top250-movies")}>
+              <Link
+                to="/shop"
+                onClick={() =>
+                  handleNavClick("top250-movies", "Top 250 Movies")
+                }
+              >
                 Top 250 Movies
               </Link>
-              <Link to="/shop" onClick={() => handleNavClick("top-box-office")}>
+              <Link
+                to="/shop"
+                onClick={() =>
+                  handleNavClick("top-box-office", "Top Box Office (US)")
+                }
+              >
                 Top Box Office (US)
               </Link>
               <Link
                 to="/shop"
-                onClick={() => handleNavClick("most-popular-movies")}
+                onClick={() =>
+                  handleNavClick("most-popular-movies", "Most Popular Movies")
+                }
               >
                 Most Popular Movies
               </Link>
@@ -83,7 +96,7 @@ const Navbar = () => {
               {" "}
               <li>
                 <Link
-                  to="/"
+                  to="/shop"
                   style={{
                     display: "flex",
                     alignItems: "center",
@@ -102,12 +115,17 @@ const Navbar = () => {
               </li>
             </button>
             <div className="dropdown-content">
-              <Link to="/shop" onClick={() => handleNavClick("top250-tv")}>
+              <Link
+                to="/shop"
+                onClick={() => handleNavClick("top250-tv", "Top 250 TV Shows")}
+              >
                 Top 250 TV Shows
               </Link>
               <Link
                 to="/shop"
-                onClick={() => handleNavClick("most-popular-tv")}
+                onClick={() =>
+                  handleNavClick("most-popular-tv", "Most Popular TV Shows")
+                }
               >
                 Most Popular TV Shows
               </Link>
@@ -134,7 +152,7 @@ const Navbar = () => {
           </Link>
         </li>
       </ul>
-      <Outlet context={{ category, setCategory }} />
+      <Outlet context={{ category, setCategory, heading }} />
     </>
   );
 };
