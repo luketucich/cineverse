@@ -7,6 +7,7 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  --card-height: auto; /* Add this line */
 }
 
 .card-content-main {
@@ -62,6 +63,7 @@
   top: var(--card-original-top);
   left: var(--card-original-left);
   width: var(--card-original-width);
+  height: var(--card-height); /* Use the card's height */
   animation: moveToCenter 0.5s ease-in-out forwards;
   background-color: white;
   border-radius: 1.5rem;
@@ -71,6 +73,7 @@
 .modal:hover {
   transform: scale(1);
 }
+
 .modal-background {
   background-color: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(10px);
@@ -83,6 +86,7 @@
 }
 
 .modal-content-main {
+  justify-content: center;
   width: 40%;
   padding: 1rem;
 }
@@ -100,6 +104,13 @@
   font-size: 1rem;
   color: #333;
 }
+
+.modal-buttons {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
+}
+
 .modal-button-container,
 .modal-button {
   display: flex;
@@ -111,7 +122,7 @@
 .modal-button p {
   margin: 0;
   padding: 0;
-  font-size: 1rem;
+  font-size: clamp(0.8rem, 1vw, 1rem);
   color: white;
 }
 
@@ -125,14 +136,24 @@
   background-color: #007bff;
   color: white;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .modal-buttons button:hover {
   background-color: #0056b3;
 }
 
+.close-icon {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  cursor: pointer;
+}
+
 @keyframes moveToCenter {
+  0% {
+    height: var(--card-height); /* Start with the card's height */
+  }
   100% {
     top: 50%;
     left: 50%;
@@ -140,10 +161,18 @@
     border-radius: 1.5rem;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
     width: 60%;
+    height: 70vh; /* Final height */
   }
 }
 
 @media (max-width: 600px) {
+  .close-icon {
+    top: 1rem;
+    right: 1rem;
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
   .card-image {
     max-height: 10rem;
   }
@@ -165,18 +194,108 @@
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    margin-top: 1rem;
   }
 
   @keyframes moveToCenter {
+    0% {
+      height: var(--card-height); /* Start with the card's height */
+    }
     100% {
-      top: 45%;
-      left: 45%;
+      top: 50%;
+      left: 50%;
       transform: translate(-50%, -50%);
       border-radius: 1.5rem;
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
       width: 80vw;
-      height: 85vh;
+      height: 85vh; /* Final height */
+    }
+  }
+}
+
+@media (min-width: 600px) and (max-width: 1024px) {
+  .close-icon {
+    top: 1rem;
+    right: 1rem;
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .card-image {
+    max-height: 10rem;
+  }
+
+  .modal-content-main {
+    margin-top: 1rem;
+    width: 70%;
+  }
+
+  .modal-content-secondary {
+    width: 70%;
+  }
+
+  .modal {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .modal-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  @keyframes moveToCenter {
+    0% {
+      height: var(--card-height); /* Start with the card's height */
+    }
+    100% {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 1.5rem;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+      width: 70vw;
+      height: 80vh; /* Final height */
+    }
+  }
+}
+
+@media (min-width: 1025px) {
+  .close-icon {
+    top: 0.75rem;
+    right: 0.75rem;
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+  .modal-content-main {
+    width: 50%;
+  }
+
+  .modal-content-secondary {
+    width: 50%;
+  }
+
+  .modal {
+    padding: 1rem;
+  }
+
+  .modal-buttons {
+    flex-direction: row;
+    gap: 1rem;
+  }
+
+  @keyframes moveToCenter {
+    0% {
+      height: var(--card-height); /* Start with the card's height */
+    }
+    100% {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 1.5rem;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+      width: 50vw;
+      height: 70vh; /* Final height */
     }
   }
 }

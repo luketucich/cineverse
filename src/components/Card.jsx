@@ -130,16 +130,7 @@ const Card = ({ item, currItem, setCurrItem }) => {
             }`}
           >
             <div className="card-details">
-              <IconX
-                className="close-icon"
-                onClick={handleCloseModal}
-                style={{
-                  position: "absolute",
-                  top: "1rem",
-                  right: "1rem",
-                  cursor: "pointer",
-                }}
-              />
+              <IconX className="close-icon" onClick={handleCloseModal} />
               <p className="modal-info">
                 <strong>Rating:</strong> {item.averageRating}/10
               </p>
@@ -160,18 +151,29 @@ const Card = ({ item, currItem, setCurrItem }) => {
               </p>
               <div className="modal-buttons">
                 <button
+                  className="modal-button"
                   onClick={() =>
                     window.open(item.url, "_blank", "noopener noreferrer")
                   }
                 >
                   <div className="modal-button-container">
-                    <IconBinoculars />
+                    <IconBinoculars
+                      style={{
+                        minWidth: "1.5rem",
+                        minHeight: "1.5rem",
+                      }}
+                    />
                     <p>View on IMDb</p>
                   </div>
                 </button>
-                <button>
-                  <div className="modal-button">
-                    <IconBookmark />
+                <button className="modal-button">
+                  <div className="modal-button-container">
+                    <IconBookmark
+                      style={{
+                        minWidth: "1.5rem",
+                        minHeight: "1.5rem",
+                      }}
+                    />
                     <p>Add to Watchlist</p>
                   </div>
                 </button>
