@@ -81,7 +81,7 @@ const Card = ({ item, currItem, setCurrItem }) => {
         className="card"
         onClick={handleOpenModal}
         style={{
-          opacity: !isVisible && !hasSeen ? 0.2 : 1,
+          opacity: !isVisible && !hasSeen ? 0.3 : 1,
           filter: !isVisible && !hasSeen ? "blur(2px)" : "none",
           transition: "all 0.6s ease-in-out",
           cursor: showModal ? "default" : "pointer",
@@ -118,7 +118,11 @@ const Card = ({ item, currItem, setCurrItem }) => {
                   fill: "gold",
                 }}
               />
-              <h1 className="card-title">{item.averageRating}/10</h1>
+              <h1 className="card-title">
+                {item.numVotes
+                  ? ` ${item.averageRating.toLocaleString()}/10`
+                  : " N/A"}
+              </h1>
             </div>
           </div>
         </div>
@@ -134,7 +138,10 @@ const Card = ({ item, currItem, setCurrItem }) => {
                 onClick={(e) => handleCloseModal(e)}
               />
               <p className="modal-info">
-                <strong>Rating:</strong> {item.averageRating}/10
+                <strong>Rating:</strong>
+                {item.numVotes
+                  ? ` ${item.averageRating.toLocaleString()}/10`
+                  : " N/A"}
               </p>
               <p className="modal-info">
                 <strong>Content Rating:</strong> {item.contentRating}
@@ -148,8 +155,10 @@ const Card = ({ item, currItem, setCurrItem }) => {
               <p className="modal-info">
                 <strong>Year:</strong> {item.startYear}
               </p>
+
               <p className="modal-info">
-                <strong>Votes:</strong> {item.numVotes.toLocaleString()}
+                <strong>Votes:</strong>
+                {item.numVotes ? ` ${item.numVotes.toLocaleString()}` : " N/A"}
               </p>
               <div className="modal-buttons">
                 <button

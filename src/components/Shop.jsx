@@ -34,7 +34,14 @@ const Shop = () => {
   // Safely render the component
   return (
     <main id="shop-main">
-      <h1>{heading}</h1>
+      <h1
+        style={{
+          textAlign: "center",
+          margin: "1rem 0",
+        }}
+      >
+        {heading}
+      </h1>
       {data ? (
         data.length > 0 ? (
           <div className="cards-container">
