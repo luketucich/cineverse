@@ -50,14 +50,20 @@ const Navbar = () => {
         <li>
           <div className="dropdown">
             <button className="dropbtn">
-              <Link to="/shop" className="nav-link">
+              <Link
+                to="/browse/top-250-movies"
+                className="nav-link"
+                onClick={() =>
+                  handleNavClick("top250-movies", "Top 250 Movies")
+                }
+              >
                 <IconMovie className="nav-icon" />
                 <p className="nav-title">Movies</p>
               </Link>
             </button>
             <div className="dropdown-content">
               <Link
-                to="/shop"
+                to="/browse/top-250-movies"
                 onClick={() =>
                   handleNavClick("top250-movies", "Top 250 Movies")
                 }
@@ -66,7 +72,7 @@ const Navbar = () => {
                 <p>Top 250 Movies</p>
               </Link>
               <Link
-                to="/shop"
+                to="/browse/top-box-office"
                 onClick={() =>
                   handleNavClick("top-box-office", "Top Box Office (US)")
                 }
@@ -75,7 +81,7 @@ const Navbar = () => {
                 <p>Top Box Office (US)</p>
               </Link>
               <Link
-                to="/shop"
+                to="/browse/most-popular-movies"
                 onClick={() =>
                   handleNavClick("most-popular-movies", "Most Popular Movies")
                 }
@@ -89,21 +95,25 @@ const Navbar = () => {
         <li>
           <div className="dropdown">
             <button className="dropbtn">
-              <Link to="/shop" className="nav-link">
+              <Link
+                to="/browse/top-250-tv"
+                className="nav-link"
+                onClick={() => handleNavClick("top250-tv", "Top 250 TV Shows")}
+              >
                 <IconDeviceTv className="nav-icon" />
                 <p className="nav-title">Television</p>
               </Link>
             </button>
             <div className="dropdown-content">
               <Link
-                to="/shop"
+                to="/browse/top-250-tv"
                 onClick={() => handleNavClick("top250-tv", "Top 250 TV Shows")}
                 className="nav-link"
               >
                 <p>Top 250 TV Shows</p>
               </Link>
               <Link
-                to="/shop"
+                to="/browse/most-popular-tv"
                 onClick={() =>
                   handleNavClick("most-popular-tv", "Most Popular TV Shows")
                 }
@@ -115,7 +125,7 @@ const Navbar = () => {
           </div>
         </li>
         <li>
-          <Link to="/" className="nav-link">
+          <Link to="/watchlist" className="nav-link">
             <IconBookmark className="nav-icon" />
             <p className="nav-title">Watchlist</p>
           </Link>

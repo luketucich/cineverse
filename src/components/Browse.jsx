@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useOutletContext } from "react-router-dom";
 import Card from "./Card";
-import "../styles/shop.css";
+import "../styles/browse.css";
 import { IconLoader } from "@tabler/icons-react";
 
 const Shop = () => {
