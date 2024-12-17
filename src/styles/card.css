@@ -1,7 +1,7 @@
 /* Card styles */
 .card {
   box-shadow: 0.0625rem 0.0625rem 0.3125rem 0.0625rem rgba(0, 0, 0, 0.2);
-  background-color: rgb(227, 227, 227);
+  background-color: rgb(48, 48, 48);
   border-radius: 1rem;
   transition: all 0.5s ease-in-out;
   height: auto;
@@ -21,13 +21,15 @@
   align-items: center;
   gap: 1rem;
   text-overflow: ellipsis;
+  color: #e0e0e0;
 }
 
 /* Secondary content inside the card */
 .card-content-secondary {
   padding: 1rem;
-  background-color: #f9f9f9;
-  border-top: 0.0625rem solid #ddd;
+  background-color: #333;
+  border-top: 0.0625rem solid #555;
+  color: #e0e0e0;
 }
 
 /* Placeholder card */
@@ -46,7 +48,7 @@
   text-align: center;
   font-weight: 500;
   font-size: 1.3rem;
-  color: black;
+  color: #e0e0e0;
   margin: 0;
   padding: 0;
 }
@@ -72,9 +74,10 @@
   width: var(--card-original-width);
   height: var(--card-height);
   animation: moveToCenter 0.5s ease-in-out forwards;
-  background-color: white;
+  background-color: #222;
   border-radius: 1.5rem;
   box-shadow: 0 0.625rem 1.25rem rgba(0, 0, 0, 0.5);
+  color: #e0e0e0;
 }
 
 /* Modal hover effect */
@@ -84,7 +87,7 @@
 
 /* Modal background overlay */
 .modal-background {
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(0.625rem);
   position: fixed;
   top: 0;
@@ -114,7 +117,7 @@
 .modal-info {
   margin: 0.5rem 0;
   font-size: 1rem;
-  color: #333;
+  color: #ccc;
 }
 
 /* Modal buttons container */

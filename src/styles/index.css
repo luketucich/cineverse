@@ -5,6 +5,8 @@
 :root {
   font-family: "Poppins", sans-serif;
   box-sizing: border-box;
+  --background-color: #121212; /* Dark background color */
+  --text-color: #ffffff; /* Light text color */
 }
 
 /* Reset body styles */
@@ -12,7 +14,8 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: rgb(200, 200, 200);
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
 
 /* Root container styles */

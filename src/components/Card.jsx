@@ -12,6 +12,7 @@ const Card = ({ item, currItem, setCurrItem }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [hasSeen, setHasSeen] = useState(false);
   const targetRef = useRef(null);
+  const scrollPosition = useRef(0);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -59,6 +60,7 @@ const Card = ({ item, currItem, setCurrItem }) => {
 
     setCurrItem(card.querySelector(".card-title").innerText);
     if (!showModal) {
+      scrollPosition.current = window.scrollY;
       setShowModal(true);
       card.classList.toggle("modal");
     }
@@ -68,6 +70,9 @@ const Card = ({ item, currItem, setCurrItem }) => {
     const card = e.target.closest(".card");
     setShowModal(false);
     card.classList.toggle("modal");
+    setTimeout(() => {
+      window.scrollTo(0, scrollPosition.current);
+    }, 0);
   };
 
   return (
