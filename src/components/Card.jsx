@@ -58,13 +58,16 @@ const Card = ({ item, currItem, setCurrItem }) => {
     );
 
     setCurrItem(card.querySelector(".card-title").innerText);
-    setShowModal(!showModal);
-
-    card.classList.toggle("modal");
+    if (!showModal) {
+      setShowModal(true);
+      card.classList.toggle("modal");
+    }
   };
 
-  const handleCloseModal = () => {
+  const handleCloseModal = (e) => {
+    const card = e.target.closest(".card");
     setShowModal(false);
+    card.classList.toggle("modal");
   };
 
   return (
@@ -81,6 +84,7 @@ const Card = ({ item, currItem, setCurrItem }) => {
           opacity: !isVisible && !hasSeen ? 0.2 : 1,
           filter: !isVisible && !hasSeen ? "blur(2px)" : "none",
           transition: "all 0.6s ease-in-out",
+          cursor: showModal ? "default" : "pointer",
         }}
       >
         <div
@@ -125,7 +129,10 @@ const Card = ({ item, currItem, setCurrItem }) => {
             }`}
           >
             <div className="card-details">
-              <IconX className="close-icon" onClick={handleCloseModal} />
+              <IconX
+                className="close-icon"
+                onClick={(e) => handleCloseModal(e)}
+              />
               <p className="modal-info">
                 <strong>Rating:</strong> {item.averageRating}/10
               </p>

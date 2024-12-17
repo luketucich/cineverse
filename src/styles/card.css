@@ -37,7 +37,6 @@
 
 /* Card hover effect */
 .card:hover {
-  cursor: pointer;
   transform: scale(1.03);
   box-shadow: 0 0.625rem 1.25rem rgba(0, 0, 0, 0.5);
 }
