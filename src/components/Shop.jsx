@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useOutletContext } from "react-router-dom";
 import Card from "./Card";
 import "../styles/shop.css";
+import { IconLoader } from "@tabler/icons-react";
 
 const Shop = () => {
   const { category, heading } = useOutletContext();
@@ -50,7 +51,14 @@ const Shop = () => {
           <p>No results found.</p>
         )
       ) : (
-        <p>Loading...</p>
+        <IconLoader
+          style={{
+            animation: "spin 1.5s linear infinite",
+            width: "40px",
+            height: "40px",
+            margin: "auto",
+          }}
+        />
       )}
     </main>
   );

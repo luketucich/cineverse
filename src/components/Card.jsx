@@ -22,9 +22,9 @@ const Card = ({ item, currItem, setCurrItem }) => {
         }
       },
       {
-        root: null, // viewport
-        rootMargin: "0px", // no margin
-        threshold: 0.5, // 50% of target visible
+        root: null,
+        rootMargin: "0px",
+        threshold: 0.5,
       }
     );
 
@@ -32,7 +32,6 @@ const Card = ({ item, currItem, setCurrItem }) => {
       observer.observe(targetRef.current);
     }
 
-    // Clean up the observer
     return () => {
       if (targetRef.current) {
         observer.unobserve(targetRef.current);
@@ -77,7 +76,7 @@ const Card = ({ item, currItem, setCurrItem }) => {
       <div
         ref={targetRef}
         className="card"
-        onClick={(e) => handleOpenModal(e)}
+        onClick={handleOpenModal}
         style={{
           opacity: !isVisible && !hasSeen ? 0.2 : 1,
           filter: !isVisible && !hasSeen ? "blur(2px)" : "none",
@@ -94,13 +93,9 @@ const Card = ({ item, currItem, setCurrItem }) => {
             src={item.primaryImage}
             alt={item.title}
           />
+
           <div className="card-info-container">
-            <h1
-              className="card-title"
-              style={{
-                "font-weight": "600",
-              }}
-            >
+            <h1 className="card-title" style={{ fontWeight: 600 }}>
               {item.title}
             </h1>
             <div
@@ -158,10 +153,7 @@ const Card = ({ item, currItem, setCurrItem }) => {
                 >
                   <div className="modal-button-container">
                     <IconBinoculars
-                      style={{
-                        minWidth: "1.5rem",
-                        minHeight: "1.5rem",
-                      }}
+                      style={{ minWidth: "1.5rem", minHeight: "1.5rem" }}
                     />
                     <p>View on IMDb</p>
                   </div>
@@ -169,10 +161,7 @@ const Card = ({ item, currItem, setCurrItem }) => {
                 <button className="modal-button">
                   <div className="modal-button-container">
                     <IconBookmark
-                      style={{
-                        minWidth: "1.5rem",
-                        minHeight: "1.5rem",
-                      }}
+                      style={{ minWidth: "1.5rem", minHeight: "1.5rem" }}
                     />
                     <p>Add to Watchlist</p>
                   </div>
