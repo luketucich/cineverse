@@ -7,7 +7,6 @@
   height: auto;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
   --card-height: auto;
 }
 
@@ -30,6 +29,7 @@
   background-color: #333;
   border-top: 0.0625rem solid #555;
   color: #e0e0e0;
+  overflow-y: scroll;
 }
 
 /* Placeholder card */
@@ -51,8 +51,18 @@
   color: #e0e0e0;
   margin: 0;
   padding: 0;
+  animation: fadeIn 0.3s ease-in-out 0.5s;
+  text-overflow: ellipsis;
 }
 
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 /* Card image styles */
 .card-image {
   border-radius: 1rem;
@@ -172,7 +182,8 @@
 /* Animation for moving modal to center */
 @keyframes moveToCenter {
   0% {
-    height: var(--card-height);
+    height: 50%;
+    width: var(--card-original-width);
   }
   100% {
     top: 50%;
@@ -181,7 +192,7 @@
     border-radius: 1.5rem;
     box-shadow: 0 0.625rem 1.25rem rgba(0, 0, 0, 0.5);
     width: 60%;
-    height: 70vh; /* Final height */
+    height: 70vh;
   }
 }
 
@@ -198,19 +209,25 @@
     max-height: 10rem;
   }
   .modal-content-main {
-    margin-top: 1rem;
     width: 80%;
+    max-height: 40%;
+    margin-top: 1rem;
   }
+
   .modal {
     flex-direction: column;
     padding: 1rem;
   }
 
   .modal-content-secondary {
+    max-height: 60%;
     padding: 1.5rem 3rem;
     overflow: scroll;
   }
 
+  .card-title {
+    font-size: clamp(1rem, 2vw, 1.5rem);
+  }
   .modal-buttons {
     display: flex;
     flex-direction: column;
@@ -219,7 +236,8 @@
 
   @keyframes moveToCenter {
     0% {
-      height: var(--card-height); /* Start with the card's height */
+      height: 50%;
+      width: var(--card-original-width);
     }
     100% {
       top: 50%;
@@ -228,7 +246,7 @@
       border-radius: 1.5rem;
       box-shadow: 0 0.625rem 1.25rem rgba(0, 0, 0, 0.5);
       width: 80vw;
-      height: 85vh; /* Final height */
+      height: 85vh;
     }
   }
 }
@@ -268,7 +286,8 @@
 
   @keyframes moveToCenter {
     0% {
-      height: var(--card-height); /* Start with the card's height */
+      height: 50%;
+      width: var(--card-original-width);
     }
     100% {
       top: 50%;
@@ -277,7 +296,7 @@
       border-radius: 1.5rem;
       box-shadow: 0 0.625rem 1.25rem rgba(0, 0, 0, 0.5);
       width: 70vw;
-      height: 80vh; /* Final height */
+      height: 80vh;
     }
   }
 }
@@ -309,7 +328,8 @@
 
   @keyframes moveToCenter {
     0% {
-      height: var(--card-height); /* Start with the card's height */
+      height: 50%;
+      width: var(--card-original-width);
     }
     100% {
       top: 50%;
@@ -318,7 +338,7 @@
       border-radius: 1.5rem;
       box-shadow: 0 0.625rem 1.25rem rgba(0, 0, 0, 0.5);
       width: 50vw;
-      height: 70vh; /* Final height */
+      height: 70vh;
     }
   }
 }

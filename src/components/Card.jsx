@@ -104,7 +104,12 @@ const Card = ({ item, currItem, setCurrItem }) => {
           />
 
           <div className="card-info-container">
-            <h1 className="card-title" style={{ fontWeight: 600 }}>
+            <h1
+              className="card-title"
+              style={{
+                fontWeight: 600,
+              }}
+            >
               {item.title}
             </h1>
             <div
