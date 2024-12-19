@@ -7,7 +7,7 @@ import {
   IconDeviceTv,
   IconMenu2,
 } from "@tabler/icons-react";
-import "../styles/Navbar.css";
+import "../styles/navbar.css";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
