@@ -63,6 +63,15 @@ const Browse = () => {
                 item={item}
                 currItem={currItem}
                 setCurrItem={setCurrItem}
+                value={
+                  localStorage.getItem("watchlist")?.includes(item.id)
+                    ? true
+                    : localStorage
+                        .getItem("completed")
+                        ?.includes(item.primaryImage)
+                    ? true
+                    : false
+                }
               />
             ))}
           </div>

@@ -6,6 +6,16 @@ const Cineverse = () => {
     window.location.href = "/browse/top250-movies";
   };
 
+  useEffect(() => {
+    if (!localStorage.getItem("watchlist")) {
+      localStorage.setItem("watchlist", JSON.stringify([]));
+    }
+
+    if (!localStorage.getItem("completed")) {
+      localStorage.setItem("completed", JSON.stringify([]));
+    }
+  }, []);
+
   return (
     <>
       <div

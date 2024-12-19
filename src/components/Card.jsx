@@ -7,10 +7,11 @@ import {
 import { useEffect, useState, useRef } from "react";
 import "../styles/card.css";
 
-const Card = ({ item, currItem, setCurrItem }) => {
+const Card = ({ item, currItem, setCurrItem, value }) => {
   const [showModal, setShowModal] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [hasSeen, setHasSeen] = useState(false);
+  const [isAdded, setIsAdded] = useState(value);
   const targetRef = useRef(null);
   const scrollPosition = useRef(0);
 
@@ -76,7 +77,13 @@ const Card = ({ item, currItem, setCurrItem }) => {
   };
 
   const handleAddToWatchlist = (item) => {
-    console.log("Added to watchlist:", item);
+    setIsAdded(true);
+    const completed = JSON.parse(localStorage.getItem("completed"));
+    if (isAdded || completed.some((image) => image === item.primaryImage)) {
+      return;
+    }
+    const prevWatchlist = JSON.parse(localStorage.getItem("watchlist"));
+    localStorage.setItem("watchlist", JSON.stringify([...prevWatchlist, item]));
   };
 
   return (
@@ -190,13 +197,17 @@ const Card = ({ item, currItem, setCurrItem }) => {
                 </button>
                 <button
                   className="modal-button"
-                  onClick={(title) => handleAddToWatchlist(title)}
+                  onClick={() => handleAddToWatchlist(item)}
                 >
                   <div className="modal-button-container">
                     <IconBookmark
-                      style={{ minWidth: "1.5rem", minHeight: "1.5rem" }}
+                      style={{
+                        minWidth: "1.5rem",
+                        minHeight: "1.5rem",
+                        fill: isAdded ? "white" : "none",
+                      }}
                     />
-                    <p>Add to Watchlist</p>
+                    <p>{isAdded ? `Added` : `Add to Watchlist`}</p>
                   </div>
                 </button>
               </div>
