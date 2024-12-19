@@ -23,7 +23,7 @@ const Browse = () => {
 
   // Update document title to include the current category
   useEffect(() => {
-    document.title = `Browse - ${heading}`;
+    document.title = `Browse | ${heading}`;
   }, [heading]);
 
   // Fetch products from API

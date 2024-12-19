@@ -5,6 +5,7 @@ import CompactCard from "./CompactCard";
 const Watchlist = () => {
   const [hasLoaded, setHasLoaded] = useState(false);
   useEffect(() => {
+    document.title = "Cineverse | Watchlist";
     setHasLoaded(true);
   }, []);
 
@@ -70,7 +71,7 @@ const Watchlist = () => {
                   src={item}
                   style={{
                     maxWidth: "10rem",
-                    height: "auto",
+                    height: "15rem",
                     margin: "0 1rem",
                     borderRadius: "0.5rem",
                     boxShadow: "0 0.5rem 1rem rgba(0, 0, 0, 0.5)",
