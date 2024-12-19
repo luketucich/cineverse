@@ -1,10 +1,4 @@
 /* Cineverse.css */
-body {
-  margin: 0;
-  color: #e6e6e6;
-  background-color: #101010;
-  line-height: 1.6;
-}
 
 .hero {
   text-align: center;
@@ -40,7 +34,7 @@ body {
 
 .hero-button {
   padding: 15px 40px;
-  background: #8b0000;
+  background-image: linear-gradient(to right, #8b0000, #5e0101);
   color: white;
   font-size: 1rem;
   border: none;
@@ -48,8 +42,10 @@ body {
   cursor: pointer;
   transition: background 0.3s ease;
   font-family: inherit;
+  transition: all 0.3s ease;
 }
 
 .hero-button:hover {
-  background: #ce0000;
+  filter: brightness(1.1);
+  scale: 1.05;
 }

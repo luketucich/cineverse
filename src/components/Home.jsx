@@ -1,8 +1,9 @@
 import "../styles/home.css";
+import { useEffect } from "react";
 
 const Cineverse = () => {
   const navigateToTopMovies = () => {
-    window.location.href = "/browse/top-250-movies";
+    window.location.href = "/browse/top250-movies";
   };
 
   return (

@@ -10,14 +10,7 @@ import {
 import "../styles/Navbar.css";
 
 const Navbar = () => {
-  const [category, setCategory] = useState("top250-movies");
-  const [heading, setHeading] = useState("Top 250 Movies");
   const [isOpen, setIsOpen] = useState(false);
-
-  const handleNavClick = (newCategory, newHeading) => {
-    setCategory(newCategory);
-    setHeading(newHeading);
-  };
 
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
@@ -50,43 +43,19 @@ const Navbar = () => {
         <li>
           <div className="dropdown">
             <button className="dropbtn">
-              <Link
-                to="/browse/top-250-movies"
-                className="nav-link"
-                onClick={() =>
-                  handleNavClick("top250-movies", "Top 250 Movies")
-                }
-              >
+              <Link to="/browse/top250-movies" className="nav-link">
                 <IconMovie className="nav-icon" />
                 <p className="nav-title">Movies</p>
               </Link>
             </button>
             <div className="dropdown-content">
-              <Link
-                to="/browse/top-250-movies"
-                onClick={() =>
-                  handleNavClick("top250-movies", "Top 250 Movies")
-                }
-                className="nav-link"
-              >
+              <Link to="/browse/top250-movies" className="nav-link">
                 <p>Top 250 Movies</p>
               </Link>
-              <Link
-                to="/browse/top-box-office"
-                onClick={() =>
-                  handleNavClick("top-box-office", "Top Box Office (US)")
-                }
-                className="nav-link"
-              >
+              <Link to="/browse/top-box-office" className="nav-link">
                 <p>Top Box Office (US)</p>
               </Link>
-              <Link
-                to="/browse/most-popular-movies"
-                onClick={() =>
-                  handleNavClick("most-popular-movies", "Most Popular Movies")
-                }
-                className="nav-link"
-              >
+              <Link to="/browse/most-popular-movies" className="nav-link">
                 <p>Most Popular Movies</p>
               </Link>
             </div>
@@ -95,30 +64,16 @@ const Navbar = () => {
         <li>
           <div className="dropdown">
             <button className="dropbtn">
-              <Link
-                to="/browse/top-250-tv"
-                className="nav-link"
-                onClick={() => handleNavClick("top250-tv", "Top 250 TV Shows")}
-              >
+              <Link to="/browse/top250-tv" className="nav-link">
                 <IconDeviceTv className="nav-icon" />
                 <p className="nav-title">Television</p>
               </Link>
             </button>
             <div className="dropdown-content">
-              <Link
-                to="/browse/top-250-tv"
-                onClick={() => handleNavClick("top250-tv", "Top 250 TV Shows")}
-                className="nav-link"
-              >
+              <Link to="/browse/top250-tv" className="nav-link">
                 <p>Top 250 TV Shows</p>
               </Link>
-              <Link
-                to="/browse/most-popular-tv"
-                onClick={() =>
-                  handleNavClick("most-popular-tv", "Most Popular TV Shows")
-                }
-                className="nav-link"
-              >
+              <Link to="/browse/most-popular-tv" className="nav-link">
                 <p>Most Popular TV Shows</p>
               </Link>
             </div>
@@ -131,7 +86,7 @@ const Navbar = () => {
           </Link>
         </li>
       </ul>
-      <Outlet context={{ category, setCategory, heading }} />
+      <Outlet />
     </>
   );
 };

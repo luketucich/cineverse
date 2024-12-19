@@ -1,18 +1,30 @@
 import { useEffect, useState } from "react";
-import { useOutletContext } from "react-router-dom";
 import Card from "./Card";
 import "../styles/browse.css";
 import { IconLoader } from "@tabler/icons-react";
 
-const Shop = () => {
-  const { category, heading } = useOutletContext();
+const Browse = () => {
+  const category = window.location.href.split("browse/")[1];
+  let heading = "";
+  if (category === "top250-movies") {
+    heading = "Top 250 Movies";
+  } else if (category === "top-box-office") {
+    heading = "Top Box Office (US)";
+  } else if (category === "most-popular-movies") {
+    heading = "Most Popular Movies";
+  } else if (category === "top250-tv") {
+    heading = "Top 250 TV Shows";
+  } else if (category === "most-popular-tv") {
+    heading = "Most Popular TV Shows";
+  }
+
   const [currItem, setCurrItem] = useState(null);
   const [data, setData] = useState(null);
 
   // Update document title to include the current category
   useEffect(() => {
     document.title = `Browse - ${heading}`;
-  }, [category]);
+  }, [heading]);
 
   // Fetch products from API
   useEffect(() => {
@@ -71,4 +83,4 @@ const Shop = () => {
   );
 };
 
-export default Shop;
+export default Browse;

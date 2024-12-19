@@ -1,7 +1,8 @@
 import Navbar from "./Navbar";
 import Home from "./Home";
-import Shop from "./Browse";
+import Browse from "./Browse";
 import Watchlist from "./Watchlist";
+import { useEffect } from "react";
 
 const routes = [
   {
@@ -14,27 +15,27 @@ const routes = [
       },
       {
         path: "/browse",
-        element: <Shop />,
+        element: <Browse />,
       },
       {
-        path: "/browse/top-250-movies",
-        element: <Shop />,
+        path: "/browse/top250-movies",
+        element: <Browse />,
       },
       {
         path: "/browse/top-box-office",
-        element: <Shop />,
+        element: <Browse />,
       },
       {
         path: "/browse/most-popular-movies",
-        element: <Shop />,
+        element: <Browse />,
       },
       {
-        path: "/browse/top-250-tv",
-        element: <Shop />,
+        path: "/browse/top250-tv",
+        element: <Browse />,
       },
       {
         path: "/browse/most-popular-tv",
-        element: <Shop />,
+        element: <Browse />,
       },
       {
         path: "/watchlist",

@@ -75,6 +75,10 @@ const Card = ({ item, currItem, setCurrItem }) => {
     }, 0);
   };
 
+  const handleAddToWatchlist = (item) => {
+    console.log("Added to watchlist:", item);
+  };
+
   return (
     <>
       {showModal && <div className="modal-background"></div>}
@@ -184,7 +188,10 @@ const Card = ({ item, currItem, setCurrItem }) => {
                     <p>View on IMDb</p>
                   </div>
                 </button>
-                <button className="modal-button">
+                <button
+                  className="modal-button"
+                  onClick={(title) => handleAddToWatchlist(title)}
+                >
                   <div className="modal-button-container">
                     <IconBookmark
                       style={{ minWidth: "1.5rem", minHeight: "1.5rem" }}

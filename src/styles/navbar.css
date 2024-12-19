@@ -7,7 +7,7 @@
   list-style-type: none;
   margin: 0;
   padding: 1rem;
-  background-color: #8b0000;
+  background-image: linear-gradient(to right, #8b0000, #5e0101);
   position: sticky;
   top: 0;
   z-index: 1000;
