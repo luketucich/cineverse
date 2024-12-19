@@ -2,7 +2,6 @@ import Navbar from "./Navbar";
 import Home from "./Home";
 import Browse from "./Browse";
 import Watchlist from "./Watchlist";
-import { useEffect } from "react";
 
 const routes = [
   {

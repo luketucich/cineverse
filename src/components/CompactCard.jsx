@@ -1,6 +1,6 @@
-import { IconStar } from "@tabler/icons-react";
+import PropTypes from "prop-types";
 import "../styles/compactcard.css";
-const CompactCard = ({ title, rating, image }) => {
+const CompactCard = ({ title, image }) => {
   const handleComplete = (title) => {
     const watchlist = JSON.parse(localStorage.getItem("watchlist"));
     const completed = JSON.parse(localStorage.getItem("completed"));
@@ -25,6 +25,11 @@ const CompactCard = ({ title, rating, image }) => {
       </div>
     </div>
   );
+};
+
+CompactCard.propTypes = {
+  title: PropTypes.string,
+  image: PropTypes.string,
 };
 
 export default CompactCard;

@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 import {
   IconBinoculars,
   IconBookmark,
@@ -219,4 +221,10 @@ const Card = ({ item, currItem, setCurrItem, value }) => {
   );
 };
 
+Card.propTypes = {
+  item: PropTypes.object.isRequired,
+  currItem: PropTypes.string.isRequired,
+  setCurrItem: PropTypes.func.isRequired,
+  value: PropTypes.bool.isRequired,
+};
 export default Card;

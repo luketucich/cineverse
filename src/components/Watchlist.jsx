@@ -58,18 +58,26 @@ const Watchlist = () => {
         >
           {completed.length > 0 ? (
             completed.map((item) => (
-              <img
-                src={item}
+              <div
                 key={item + "completed"}
+                className="completed-item"
                 style={{
-                  maxWidth: "10rem",
-                  height: "auto",
-                  margin: "0 1rem",
-                  borderRadius: "0.5rem",
-                  boxShadow: "0 0.5rem 1rem rgba(0, 0, 0, 0.5)",
-                  border: "0.5rem solid rgb(48, 48, 48)",
+                  position: "relative",
+                  transition: "transform 0.3s",
                 }}
-              />
+              >
+                <img
+                  src={item}
+                  style={{
+                    maxWidth: "10rem",
+                    height: "auto",
+                    margin: "0 1rem",
+                    borderRadius: "0.5rem",
+                    boxShadow: "0 0.5rem 1rem rgba(0, 0, 0, 0.5)",
+                    border: "0.5rem solid rgb(48, 48, 48)",
+                  }}
+                />
+              </div>
             ))
           ) : (
             <p>Nothing completed yet!</p>
