@@ -61,7 +61,7 @@ const Card = ({ item, currItem, setCurrItem, value }) => {
       `${cardBounds.width}px`
     );
 
-    setCurrItem(card.querySelector(".card-title").innerText);
+    setCurrItem(card.querySelector(".card-primaryTitle").innerText);
     if (!showModal) {
       scrollPosition.current = window.scrollY;
       setShowModal(true);
@@ -91,7 +91,7 @@ const Card = ({ item, currItem, setCurrItem, value }) => {
   return (
     <>
       {showModal && <div className="modal-background"></div>}
-      {showModal && currItem === item.title && (
+      {showModal && currItem === item.primaryTitle && (
         <div className="card placeholder"></div>
       )}
       <div
@@ -113,17 +113,17 @@ const Card = ({ item, currItem, setCurrItem, value }) => {
           <img
             className="card-image"
             src={item.primaryImage}
-            alt={item.title}
+            alt={item.primaryTitle}
           />
 
           <div className="card-info-container">
             <h1
-              className="card-title"
+              className="card-primaryTitle"
               style={{
                 fontWeight: 600,
               }}
             >
-              {item.title}
+              {item.primaryTitle}
             </h1>
             <div
               style={{
@@ -141,7 +141,7 @@ const Card = ({ item, currItem, setCurrItem, value }) => {
                   fill: "gold",
                 }}
               />
-              <h1 className="card-title">
+              <h1 className="card-primaryTitle">
                 {item.numVotes
                   ? ` ${item.averageRating.toLocaleString()}/10`
                   : " N/A"}
@@ -149,7 +149,7 @@ const Card = ({ item, currItem, setCurrItem, value }) => {
             </div>
           </div>
         </div>
-        {showModal && currItem === item.title && (
+        {showModal && currItem === item.primaryTitle && (
           <div
             className={`card-content-secondary ${
               showModal ? "modal-content-secondary" : ""
